@@ -1,17 +1,16 @@
 package com.invoice.api.v0
 
-import com.invoice.api.v0.data.CreateInvoiceDTO
-import com.invoice.api.v0.data.toInvoice
+import com.concur.t2.rvr.datastore.DynamoDBClient
+import com.invoice.api.v0.model.Invoice
 import java.util.*
 
 object InvoiceService {
-    fun create(dto : CreateInvoiceDTO) : Map<String, UUID> {
-        // TODO: Validate invoice data? Maybe a new controller that registers its route himself
-        val invoice = dto.toInvoice()
-
-        // TODO: Divide the products stuff into a Products array. Any benefit on doing the same for the Customer?
-
-        // TODO: store in the database
+    fun create(invoice : Invoice) : Map<String, UUID> {
+        DynamoDBClient.put(invoice)
         return mapOf("id" to invoice.id)
+    }
+
+    fun get(id : UUID) : Invoice? {
+        return DynamoDBClient.get(id)
     }
 }

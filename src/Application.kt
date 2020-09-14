@@ -6,6 +6,7 @@ import io.ktor.routing.*
 import io.ktor.http.*
 import io.ktor.locations.*
 import com.fasterxml.jackson.databind.*
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.invoice.api.registerAPIRoutes
 import io.ktor.jackson.*
 import io.ktor.features.*
@@ -24,6 +25,9 @@ fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) {
         jackson {
             enable(SerializationFeature.INDENT_OUTPUT)
+            registerModule(JavaTimeModule())
+            disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)
         }
     }
 

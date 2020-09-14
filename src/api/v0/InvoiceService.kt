@@ -13,4 +13,12 @@ object InvoiceService {
     fun get(id : UUID) : Invoice? {
         return DynamoDBClient.get(id)
     }
+
+    fun edit(invoice : Invoice) : Boolean {
+        return DynamoDBClient.update(invoice)
+    }
+
+    fun getAll() : List<Invoice> {
+        return DynamoDBClient.getAll()
+    }
 }

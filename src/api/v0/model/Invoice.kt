@@ -2,16 +2,16 @@ package com.invoice.api.v0.model
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import java.math.BigDecimal
+import io.swagger.annotations.ApiModelProperty
 import java.time.LocalDateTime
 import java.util.*
 
 data class Invoice(
         @JsonProperty("id")
+        @ApiModelProperty(required = true)
         val id: UUID,
 
-        @JsonProperty("created")
+        @JsonProperty("created", required = false)
         @JsonFormat(
                 timezone = "UTC",
                 shape = JsonFormat.Shape.STRING,

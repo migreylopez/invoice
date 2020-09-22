@@ -2,10 +2,14 @@ buildscript {
     repositories {
         jcenter()
     }
-    
+
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+plugins {
+    id 'base'
 }
 
 apply plugin: 'kotlin'
@@ -15,17 +19,11 @@ group 'com.invoice'
 version '0.0.1'
 mainClassName = "io.ktor.server.jetty.EngineMain"
 
-sourceSets {
-    main.kotlin.srcDirs = main.java.srcDirs = ['src']
-    test.kotlin.srcDirs = test.java.srcDirs = ['test']
-    main.resources.srcDirs = ['resources']
-    test.resources.srcDirs = ['testresources']
-}
-
 repositories {
     mavenLocal()
     jcenter()
     maven { url 'https://kotlin.bintray.com/ktor' }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -38,13 +36,11 @@ dependencies {
     implementation "io.ktor:ktor-client-core:$ktor_version"
     implementation "io.ktor:ktor-client-core-jvm:$ktor_version"
     implementation "io.ktor:ktor-client-logging-jvm:$ktor_version"
-
-    //aws
     implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.801')
     implementation "com.amazonaws:aws-java-sdk-dynamodb"
+    implementation "io.swagger:swagger-annotations:1.5.22"
 
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.10"
-
 
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 }

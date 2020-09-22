@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.invoice.api.v0.model.Customer
 import com.invoice.api.v0.model.Invoice
 import com.invoice.api.v0.model.Product
+import org.intellij.lang.annotations.Pattern
+import org.jetbrains.annotations.NotNull
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*

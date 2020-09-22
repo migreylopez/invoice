@@ -1,5 +1,6 @@
 package com.invoice
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -19,11 +20,11 @@ fun main(args: Array<String>): Unit = io.ktor.server.jetty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
-    install(Locations) {
-    }
+    install(Locations)
 
     install(ContentNegotiation) {
         jackson {
+            setSerializationInclusion(JsonInclude.Include.NON_NULL)
             enable(SerializationFeature.INDENT_OUTPUT)
             registerModule(JavaTimeModule())
             disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)

@@ -1,4 +1,4 @@
-restart-db: docker-kill docker-start create-table
+start-db: docker-kill docker-start create-table
 
 docker-kill:
 	-docker kill dynamodb-local 2>/dev/null

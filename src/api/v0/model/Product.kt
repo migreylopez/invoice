@@ -9,7 +9,7 @@ data class Product(
         @JsonProperty("name")
         val name: String,
         @JsonProperty("quantity")
-        val quantity: String,
+        val quantity: Int,
         @JsonProperty("price")
         val price: BigDecimal
 )

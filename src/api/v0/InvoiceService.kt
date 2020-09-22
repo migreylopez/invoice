@@ -1,6 +1,5 @@
 package com.invoice.api.v0
 
-import com.concur.t2.rvr.datastore.DynamoDBClient
 import com.invoice.api.v0.model.Invoice
 import java.util.*
 
@@ -20,5 +19,9 @@ object InvoiceService {
 
     fun getAll() : List<Invoice> {
         return DynamoDBClient.getAll()
+    }
+
+    fun delete(id: UUID) : Boolean {
+        return DynamoDBClient.delete(id)
     }
 }

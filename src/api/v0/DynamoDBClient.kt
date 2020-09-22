@@ -1,4 +1,4 @@
-package com.concur.t2.rvr.datastore
+package com.invoice.api.v0
 
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB
@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.model.AttributeAction
 import com.amazonaws.services.dynamodbv2.model.AttributeValue
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate
+import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest
 import com.amazonaws.services.dynamodbv2.model.ReturnValue
 import com.amazonaws.services.dynamodbv2.model.ScanRequest
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest
@@ -71,8 +72,10 @@ object DynamoDBClient {
                 }
     }
 
-    fun delete(): Boolean {
-        return true
+    fun delete(id: UUID): Boolean {
+        return client.deleteItem(
+                DeleteItemRequest(table_name, mapOf("id" to AttributeValue(id.toString())), ReturnValue.ALL_OLD)
+        ).attributes.isNotEmpty()
     }
 
     private fun Invoice.toAttributeValue() = AttributeValue(objectMapper.writeValueAsString(this))

@@ -3,7 +3,6 @@ package com.invoice.api.v0.controller
 import com.invoice.api.v0.InvoiceService
 import com.invoice.api.v0.data.CreateInvoiceDTO
 import com.invoice.api.v0.model.Invoice
-import io.ktor.application.ApplicationCall
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.KtorExperimentalLocationsAPI
@@ -13,8 +12,6 @@ import io.ktor.locations.post
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Route
-import io.swagger.annotations.Api
-import io.swagger.annotations.ApiOperation
 import java.util.*
 
 @KtorExperimentalLocationsAPI
@@ -61,16 +58,16 @@ class InvoicesController {
 
     object Routes {
         @Location("/create")
-        class Create()
+        class Create
 
         @Location("/get/{invoiceId}")
         class Get(val invoiceId : UUID)
 
         @Location("/edit")
-        class Edit()
+        class Edit
 
         @Location("/all")
-        class All()
+        class All
 
         @Location("/delete/{invoiceId}")
         class Delete(val invoiceId: UUID)

@@ -21,6 +21,12 @@ fun main(args: Array<String>): Unit = io.ktor.server.jetty.EngineMain.main(args)
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
     install(Locations)
+    install(CORS)
+    {
+        method(HttpMethod.Get)
+        anyHost()
+        allowNonSimpleContentTypes = true
+    }
 
     install(ContentNegotiation) {
         jackson {

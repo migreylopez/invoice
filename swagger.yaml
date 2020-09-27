@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: My Service
+  version: 0.1.0
+servers:
+  - url: http://localhost:1234
+paths:
+  "/api/v0/create":
+    post:
+      requestBody:
+        description:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInvoiceRequest'
+      responses:
+        "200":
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Invoice"
+  "/api/v0/get/{id}":
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Invoice"
+  "/api/v0/edit":
+    post:
+      requestBody:
+        description:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        "204":
+          description: No content
+        '400':
+          description: Bad request
+  "/api/v0/all":
+    get:
+      responses:
+        "200":
+          content:
+            "application/json":
+              type: array
+              items:
+                $ref: "#/components/schemas/Invoice"
+        '400':
+          description: Bad request
+  "/api/v0/delete/{id}":
+    get:
+      parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: string
+      responses:
+        "204":
+          description: No content
+components:
+  schemas:
+    CreateInvoiceRequest:
+      type: object
+      required:
+        - currency
+        - customer
+        - products
+      properties:
+        currency:
+          type: string
+          description: Currency used to pay the invoice
+        customer:
+          $ref: "#/components/schemas/Customer"
+          description: Customer that paid for the invoiced goods/services
+        products:
+          type: array
+          description: List of products
+          items:
+            $ref: "#/components/schemas/Product"
+    Invoice:
+      type: object
+      required:
+        - id
+        - currency
+        - customer
+        - products
+      properties:
+        id:
+          type: string
+          description: Invoice identifier
+        created:
+          type: string
+          description: Invoice creation date
+        updated:
+          type: string
+          description: Invoice last update date
+        currency:
+          type: string
+          description: Currency used to pay the invoice
+        customer:
+          $ref: "#/components/schemas/Customer"
+          description: Customer that paid for the invoiced goods/services
+        products:
+          type: array
+          description: List of products
+          items:
+            $ref: "#/components/schemas/Product"
+    Customer:
+      type: object
+      required:
+        - id
+        - name
+        - address
+      properties:
+        id:
+          type: string
+          description: Customer identifier
+        name:
+          type: string
+          description: Name of the customer
+        address:
+          type: string
+          description: Address of the customer
+    Product:
+      type: object
+      required:
+        - sku
+        - name
+        - quantity
+        - price
+      properties:
+        sku:
+          type: string
+          description: SKU of the product
+        name:
+          type: string
+          description: Name of the product
+        quantity:
+          type: string
+          description: Quantity of items in the invoice for this product
+        price:
+          type: number
+          description: Price of the item at the time of sale

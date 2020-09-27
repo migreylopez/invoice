@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "24f1d5c2-b08c-4f24-8042-0cfb3bd6cafc",
+		"name": "Invoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currency\":\"EUR\",\n    \"customer\": {\n        \"id\":\"55a59524-c623-4204-9465-7d16c80a9401\",\n        \"name\":\"Jane Doe\",\n        \"address\":\"Fake street 24\"\n    },\n    \"products\": [\n        {\n            \"sku\":\"BENQ14427\",\n            \"name\":\"BenQ Monitor 144Hz 27 inches\",\n            \"quantity\":\"1\",\n            \"price\":\"299.95\"\n        },\n        {\n            \"sku\":\"PLAYSTATION5\",\n            \"name\":\"Playstation 5\",\n            \"quantity\":\"1\",\n            \"price\":\"500.11\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v0/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v0",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"4888165c-e9d8-4fec-b3e0-9f7d80bba9bc\",\n    \"created\": \"2020-09-15T23:39:53.726Z\",\n    \"updated\": null,\n    \"currency\": \"USD\",\n    \"customer\": {\n        \"id\": \"55a59524-c623-4204-9465-7d16c80a9401\",\n        \"name\": \"vam0salaplaya\",\n        \"address\": \"Sokolska 50\"\n    },\n    \"products\": [\n        {\n            \"sku\": \"lolzSKU\",\n            \"name\": \"Monitor 360hz\",\n            \"quantity\": \"1\",\n            \"price\": 550.48\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v0/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v0",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

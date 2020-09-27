@@ -8,4 +8,4 @@ services:
     ports:
       - "8000:8000"
     entrypoint: java
-    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+    command: "-jar DynamoDBLocal.jar -sharedDb"

@@ -63,7 +63,6 @@ object DynamoDBClient {
     }
 
     fun getAll(): List<Invoice> {
-        println("Retrieving all the invoices from $table_name")
         return client
                 .scan(ScanRequest(table_name))
                 .items

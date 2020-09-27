@@ -1,5 +1,6 @@
 package com.invoice.api.v0.controller
 
+import com.invoice.api.v0.DynamoDBClient
 import com.invoice.api.v0.InvoiceService
 import com.invoice.api.v0.data.CreateInvoiceDTO
 import com.invoice.api.v0.model.Invoice
@@ -20,8 +21,10 @@ class InvoicesController {
         init {
             route.post<Routes.Create> {
                 val createInvoiceDTO = call.receive<CreateInvoiceDTO>()
-                // TODO: Validate invoice data?
-                call.respond(InvoiceService.create(createInvoiceDTO.toInvoice()))
+                // TODO: Validate invoice data
+                val invoice = createInvoiceDTO.toInvoice()
+                InvoiceService.create(invoice)
+                call.respond(invoice)
             }
 
             route.get<Routes.Get> {
@@ -42,7 +45,9 @@ class InvoicesController {
             }
 
             route.get<Routes.All> {
+                println("Retrieving all the invoices from DynamoDB")
                 call.respond(InvoiceService.getAll())
+                println("Finished getting all the invoices from DynamoDB")
             }
 
             route.get<Routes.Delete> {

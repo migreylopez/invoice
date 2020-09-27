@@ -27,14 +27,6 @@ data class Invoice(
         )
         val updated: LocalDateTime?,
 
-        @JsonProperty("deleted", required = false)
-        @JsonFormat(
-                timezone = "UTC",
-                shape = JsonFormat.Shape.STRING,
-                pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'"
-        )
-        val deleted: LocalDateTime?,
-
         @JsonProperty("currency")
         val currency: Currency,
 

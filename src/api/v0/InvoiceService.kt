@@ -4,9 +4,8 @@ import com.invoice.api.v0.model.Invoice
 import java.util.*
 
 object InvoiceService {
-    fun create(invoice : Invoice) : Map<String, UUID> {
+    fun create(invoice : Invoice) {
         DynamoDBClient.put(invoice)
-        return mapOf("id" to invoice.id)
     }
 
     fun get(id : UUID) : Invoice? {

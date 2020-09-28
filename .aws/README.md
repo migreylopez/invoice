@@ -1,0 +1,1 @@
+These are just dummy aws profile configuration files for the docker aws cli to work.

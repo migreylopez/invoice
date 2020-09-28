@@ -14,5 +14,5 @@ make start
 ```
 Once you're finished the service & database can be stopped by:
 ```
-make stop
+docker-compose down
 ```

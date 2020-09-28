@@ -1,19 +1,29 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.github.jengelman.gradle.plugins:shadow:5.2.0"
     }
 }
 
 apply plugin: 'kotlin'
+apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: 'application'
 
 group 'com.invoice'
 version '0.0.1'
-mainClassName = "io.ktor.server.jetty.EngineMain"
+mainClassName = "com.invoice.ApplicationKt"
+
+shadowJar {
+    baseName = 'invoice'
+    classifier = null
+    version = null
+    mergeServiceFiles()
+}
 
 sourceSets {
     main.kotlin.srcDirs = main.java.srcDirs = ['src']

@@ -1,12 +1,10 @@
-docker-start:
-	docker-compose up -d
+start: up create-table
 
-docker-stop:
-	-docker-compose down 2>/dev/null
+up: stop
+	docker-compose -f docker-compose.yaml up --force-recreate -d
 
-db-start: docker-start create-table
-
-db-restart: docker-stop docker-start create-table
+stop:
+	docker-compose down
 
 create-table:
 	docker run --rm -v $(PWD)/.aws:/root/.aws amazon/aws-cli:2.0.6 dynamodb create-table \

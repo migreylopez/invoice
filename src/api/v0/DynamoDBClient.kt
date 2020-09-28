@@ -26,7 +26,7 @@ object DynamoDBClient {
     private val client: AmazonDynamoDB by lazy {
         AmazonDynamoDBClientBuilder
                 .standard()
-                .withEndpointConfiguration(AwsClientBuilder.EndpointConfiguration("http://localhost:8000", "local"))
+                .withEndpointConfiguration(AwsClientBuilder.EndpointConfiguration("http://dynamodb:8000", "local"))
                 .build()
     }
 

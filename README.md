@@ -2,18 +2,17 @@
 
 [Swagger API documentation](https://migreylopez.github.io/invoice/)
 
-## Deployment
+## Local deployment
 
-1. Build the shadowJar:
+Build the shadowJar:
 ```
 ./gradlew clean build shadowJar
 ```
-2. Start the service & database through docker-compose and create the DynamoDB table:
+Start the service & database through docker-compose and create the DynamoDB table:
 ```
 make start
 ```
-
-To stop the service & database:
+Once you're finished the service & database can be stopped by:
 ```
 make stop
 ```

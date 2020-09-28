@@ -6,6 +6,9 @@ up: stop
 stop:
 	docker-compose down
 
+shadowJar:
+	./gradlew clean build shadowJar
+
 create-table:
 	docker run --rm -v $(PWD)/.aws:/root/.aws amazon/aws-cli:2.0.6 dynamodb create-table \
 		--table-name Invoice \

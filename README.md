@@ -4,7 +4,11 @@
 
 ## Deployment
 
-Start the service & database
+1. Build the shadowJar
+```
+make shadowJar
+```
+2. Start the service & database through docker-compose
 ```
 make start
 ```

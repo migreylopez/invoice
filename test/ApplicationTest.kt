@@ -17,7 +17,7 @@ import io.ktor.server.testing.*
 class ApplicationTest {
     @Test
     fun testRoot() {
-        withTestApplication({ module(testing = true) }) {
+        withTestApplication({ module() }) {
             handleRequest(HttpMethod.Get, "/health").apply {
                 assertEquals(HttpStatusCode.OK, response.status())
                 assertEquals("OK", response.content)

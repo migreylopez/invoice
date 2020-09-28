@@ -6,9 +6,9 @@
 
 1. Build the shadowJar:
 ```
-make shadowJar
+./gradlew clean build shadowJar
 ```
-2. Start the service & database through docker-compose:
+2. Start the service & database through docker-compose and create the DynamoDB table:
 ```
 make start
 ```

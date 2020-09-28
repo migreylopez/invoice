@@ -21,7 +21,6 @@ class InvoicesController {
         init {
             route.post<Routes.Create> {
                 val createInvoiceDTO = call.receive<CreateInvoiceDTO>()
-                // TODO: Validate invoice data
                 val invoice = createInvoiceDTO.toInvoice()
                 InvoiceService.create(invoice)
                 call.respond(invoice)
@@ -36,7 +35,6 @@ class InvoicesController {
 
             route.post<Routes.Edit> {
                 val invoice = call.receive<Invoice>()
-                // TODO: Validate invoice data?
                 if (InvoiceService.edit(invoice)) {
                     call.respond(HttpStatusCode.NoContent)
                 } else {

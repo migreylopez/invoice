@@ -37,9 +37,7 @@ fun Application.module() {
         }
     }
 
-    /**
-     * Support UUIDs in request paths
-     */
+    // Support UUIDs in request paths
     install(DataConversion) {
         convert<UUID> {
 
